@@ -4,7 +4,7 @@
 
 Шлюз производит сканирование BLE сети на наличие датчиков "Xiaomi Mijia 2", обрабатывает показания и публикует по MQTT.
 
-Ссылки на [GitHub](https://github.com/Otto17/ESP32_BLE_Getway_for_Xiaomi_Mijia2) и [GitFlic](https://github.com/Otto17/esp32_ble_getway_for_xiaomi_mijia2).
+Ссылки на [GitHub](https://github.com/Otto17/ESP32_BLE_Getway_for_Xiaomi_Mijia2) и [GitFlic](https://gitflic.ru/project/otto/esp32_ble_getway_for_xiaomi_mijia2).
 
 P.S. У меня 2 датчика, мне этого достаточно и данный шлюз рассчитывал использование двух датчиков.  
 Если нужно больше или меньше, то редактируйте код под себя, всё же проект делал в первую очередь для личного использования. Комментариев в коде избыточно.
