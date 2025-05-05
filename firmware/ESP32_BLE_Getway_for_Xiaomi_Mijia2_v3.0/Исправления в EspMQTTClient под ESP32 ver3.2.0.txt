@@ -1,0 +1,3 @@
+В библиотеку "EspMQTTClient" для работы с ядром ESP32 v3.2.0 (от Espressif Systems) я добавил 2 маленьких изменения:
+В файле "EspMQTTClient.h" на 25 строке добавил "#include <WiFi.h>".
+В файле "EspMQTTClient.cpp" на 555 строке изменил название WiFi режима на "WiFi.mode(WIFI_MODE_STA);".
