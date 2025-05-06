@@ -32,21 +32,26 @@ void ResetButton() {
 
 // Вычисление времени непрерывной работы МК (с защитой от перепнения)
 Uptime updateUptime() {
-  static uint32_t last_millis = 0;
-  uint32_t delta = millis() - last_millis;
-  last_millis = millis();
+  static unsigned long previousMillis = 0;
+  static unsigned long totalMillis = 0;
 
-  static Uptime uptime;
-  uptime.seconds += delta / 1000;
+  unsigned long currentMillis = millis();
 
-  // Конвертация секунд в дни:часы:минуты
-  uptime.minutes = uptime.seconds / 60;
-  uptime.hours = uptime.minutes / 60;
-  uptime.days = uptime.hours / 24;
+  // Обработка переполнения millis()
+  if (currentMillis < previousMillis) {
+    totalMillis += (ULONG_MAX - previousMillis) + currentMillis;
+  } else {
+    totalMillis += currentMillis - previousMillis;
+  }
+  previousMillis = currentMillis;
 
-  uptime.seconds %= 60;
-  uptime.minutes %= 60;
-  uptime.hours %= 24;
+  // Преобразование миллисекунд в дни:часы:минуты:секунды
+  unsigned long uptimeSeconds = totalMillis / 1000;
+  Uptime uptime;
+  uptime.days = uptimeSeconds / 86400;
+  uptime.hours = (uptimeSeconds % 86400) / 3600;
+  uptime.minutes = (uptimeSeconds % 3600) / 60;
+  uptime.seconds = uptimeSeconds % 60;
 
   return uptime;
 }
